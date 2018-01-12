@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		2D03501D1F690D58009B1AFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D03501C1F690D58009B1AFA /* AppDelegate.m */; };
 		2D0350201F690D58009B1AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D03501F1F690D58009B1AFA /* main.m */; };
-		2D0350231F690D58009B1AFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0350221F690D58009B1AFA /* ViewController.m */; };
 		2D0350251F690D58009B1AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0350241F690D58009B1AFA /* Assets.xcassets */; };
 		2D0350281F690D58009B1AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0350261F690D58009B1AFA /* Main.storyboard */; };
+		2D0350311F690D8C009B1AFA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0350301F690D8C009B1AFA /* MainViewController.m */; };
+		2D22EA361F69746C0063441E /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22EA351F69746C0063441E /* Item.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,11 +20,14 @@
 		2D03501B1F690D58009B1AFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D03501C1F690D58009B1AFA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D03501F1F690D58009B1AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2D0350211F690D58009B1AFA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2D0350221F690D58009B1AFA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2D0350241F690D58009B1AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D0350271F690D58009B1AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D0350291F690D58009B1AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D03502F1F690D8C009B1AFA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		2D0350301F690D8C009B1AFA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		2D22EA341F69746C0063441E /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../Item.h; sourceTree = "<group>"; };
+		2D22EA351F69746C0063441E /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = ../Item.m; sourceTree = "<group>"; };
+		2D956FAE1F6AAE9E00079579 /* SimpleFAT12.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleFAT12.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,13 @@
 		2D03501A1F690D58009B1AFA /* SimpleFAT12 */ = {
 			isa = PBXGroup;
 			children = (
+				2D956FAE1F6AAE9E00079579 /* SimpleFAT12.entitlements */,
+				2D22EA341F69746C0063441E /* Item.h */,
+				2D22EA351F69746C0063441E /* Item.m */,
 				2D03501B1F690D58009B1AFA /* AppDelegate.h */,
 				2D03501C1F690D58009B1AFA /* AppDelegate.m */,
-				2D0350211F690D58009B1AFA /* ViewController.h */,
-				2D0350221F690D58009B1AFA /* ViewController.m */,
+				2D03502F1F690D8C009B1AFA /* MainViewController.h */,
+				2D0350301F690D8C009B1AFA /* MainViewController.m */,
 				2D0350241F690D58009B1AFA /* Assets.xcassets */,
 				2D0350261F690D58009B1AFA /* Main.storyboard */,
 				2D0350291F690D58009B1AFA /* Info.plist */,
@@ -102,13 +109,18 @@
 		2D0350101F690D58009B1AFA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Kęstutis Rutkauskas";
 				TargetAttributes = {
 					2D0350171F690D58009B1AFA = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 824T5QR2SV;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -147,9 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D0350231F690D58009B1AFA /* ViewController.m in Sources */,
+				2D22EA361F69746C0063441E /* Item.m in Sources */,
 				2D0350201F690D58009B1AFA /* main.m in Sources */,
 				2D03501D1F690D58009B1AFA /* AppDelegate.m in Sources */,
+				2D0350311F690D8C009B1AFA /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +190,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -185,7 +200,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -225,7 +244,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -233,7 +254,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -260,6 +285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleFAT12/SimpleFAT12.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 824T5QR2SV;
 				INFOPLIST_FILE = SimpleFAT12/Info.plist;
@@ -273,6 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleFAT12/SimpleFAT12.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 824T5QR2SV;
 				INFOPLIST_FILE = SimpleFAT12/Info.plist;
@@ -301,6 +328,7 @@
 				2D03502E1F690D58009B1AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
